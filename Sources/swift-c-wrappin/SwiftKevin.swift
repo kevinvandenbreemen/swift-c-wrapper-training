@@ -1,9 +1,9 @@
-import KevinCCode
+import snerklor
 
 class SwiftKevin {
 
     func printGreeting() {
-        KevinCCode.printHello()
+        snerklor.printHello()
     }
 
 }
