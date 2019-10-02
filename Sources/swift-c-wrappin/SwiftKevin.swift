@@ -1,9 +1,9 @@
-import CKevinCCode
+import KevinCCode
 
 class SwiftKevin {
 
     func printGreeting() {
-        CKevinCCode.printHello()
+        KevinCCode.printHello()
     }
 
 }
