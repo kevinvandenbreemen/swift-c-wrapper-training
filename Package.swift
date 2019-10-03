@@ -10,9 +10,6 @@ let package = Package(
         .library(
             name: "snerklor",
             targets: ["snerklor"]),
-        .library(
-            name: "swift-c-wrappin",
-            targets: ["swift-c-wrappin"]),
         
     ],
     dependencies: [
