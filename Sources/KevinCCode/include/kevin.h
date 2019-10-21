@@ -4,9 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct CallbackIntoSwift {
+
+    void (* callSwiftFromC)(int number);
+
+} CallbackIntoSwift;
+
 void printHello();
 double getDataFromImplementationDetail();
 double * implementationDetail();
+void callSwift(CallbackIntoSwift *callback);
 
 
 double * implementationDetail() {

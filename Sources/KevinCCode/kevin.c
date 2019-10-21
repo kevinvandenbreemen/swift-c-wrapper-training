@@ -17,3 +17,8 @@ double getDataFromImplementationDetail() {
 void printANumber(int number) {
     printf("Hello from a separate header.  The number is %d\n", number);
 }
+
+void callSwift(CallbackIntoSwift *callback) {
+    printf("C Received a request to call Swift Code!\n");
+    callback->callSwiftFromC(2501);
+}
