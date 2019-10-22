@@ -3,6 +3,8 @@
 #include "include/kevin.h"
 #include "include/separate.h"
 
+#define COUNT 10
+
 void printHello() {
     printf("Hello from C and the SNERKLOR subsystem\n");
     printf("Data from Implementation:  %f\n", getDataFromImplementationDetail());
@@ -26,15 +28,22 @@ void callSwift(CallbackIntoSwift *callback) {
 }
 
 void executeAdvancedCode(CallbackWithArray *callback) {
-    int *data = malloc(10 * sizeof(int));
+
+    int *data = malloc(COUNT * sizeof(int));
     int i;
-    for(i=0; i<10; i++) {
+    for(i=0; i<COUNT; i++) {
         data[i] = i*2;
     }
 
-    int num = callback->executeAdvancedCode(data);
+    double *doubles = malloc(COUNT * sizeof(double));
+    for(i=0; i<COUNT; i++) {
+        doubles[i] = i / 3.234234;
+    }
+
+    int num = callback->executeAdvancedCode(COUNT, data, doubles);
 
     free(data);
+    free(doubles);
 
     printf("Result of call to Swift:  %d\n", num);
 }

@@ -12,7 +12,7 @@ typedef struct CallbackIntoSwift {
 
 typedef struct CallbackWithArray {
 
-    int (* executeAdvancedCode)(int * array);
+    int (* executeAdvancedCode)(int count, int * array, double * doubles);
 
 } CallbackWithArray;
 

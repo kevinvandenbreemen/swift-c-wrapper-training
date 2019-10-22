@@ -19,28 +19,26 @@ class SwiftKevin {
 
         //  Trying to send data like arrays etc and return data
         var swiftCall = CallbackWithArray(
-            executeAdvancedCode: { (array) in 
+            executeAdvancedCode: { (count, intArray, doubleArray) in 
 
-                //print("Size:  \(array.count)")
-
-                guard let pointer = array else {
-                    print("Pointer not available!")
-                    return -1
+                guard let intArray = intArray, let doubleArray = doubleArray else {
+                    debugPrint("Missing Data.  Cannot do aything")
+                    return -11
                 }
 
-                guard let data = pointer.pointee as? Int32 else {
-                    print("Could not get data...  It is a \(type(of: pointer.pointee))")
-                    
-                    return -1
-                }
+                print("Type of count=\(type(of: count))")
 
-                for i in 0..<10 {
-                    guard let nextItem = (pointer + i) as? UnsafeMutablePointer<Int32>, let nextVal = nextItem.pointee as? Int32 else {
-                        print("Not a pointer")
+                for i in 0..<Int(count) {
+                    guard let nextItem = (intArray + i) as? UnsafeMutablePointer<Int32>, let intValue = nextItem.pointee as? Int32 else {
+                        print("Int Val Not Found")
                         return -1
                     }
 
-                    print("live from new york it's \(nextVal)")
+                    guard let nextDouble = (doubleArray + i) as? UnsafeMutablePointer<Double>, let dblVal = nextDouble.pointee as? Double else {
+                        return -1
+                    }
+
+                    print("live from new york it's \(intValue) -- \(nextDouble.pointee)")
                 }
 
                 return 2501
