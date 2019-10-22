@@ -10,11 +10,17 @@ typedef struct CallbackIntoSwift {
 
 } CallbackIntoSwift;
 
+typedef struct CallbackWithArray {
+
+    int (* executeAdvancedCode)(int * array);
+
+} CallbackWithArray;
+
 void printHello();
 double getDataFromImplementationDetail();
 double * implementationDetail();
 void callSwift(CallbackIntoSwift *callback);
-
+void executeAdvancedCode(CallbackWithArray *callback);
 
 double * implementationDetail() {
 
