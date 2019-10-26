@@ -1,6 +1,32 @@
 import snerklor
 
+class NumPrinter{
+
+    func printInt(i: Int32) {
+        print("The number is \(i)")
+    }
+
+}
+
 class SwiftKevin {
+
+    static let printers: [NumPrinter] = [NumPrinter(), NumPrinter()]    
+
+    static func doSomeStaticWork(ints: [Int32], doubles: [Double]) {
+        print("Static function called:  ints=\(ints), doubles=\(doubles)")
+
+        printers.forEach {pr in 
+            ints.forEach{ num in 
+                pr.printInt(i: num)
+            }
+                
+        }
+
+    }
+
+    func doSomethingWithMyself() {
+        print("Dis something")
+    }
 
     func printGreeting() {
         snerklor.printHello()
@@ -28,6 +54,9 @@ class SwiftKevin {
 
                 print("Type of count=\(type(of: count))")
 
+                var ints: [Int32] = []
+                var doubles: [Double] = []
+
                 for i in 0..<Int(count) {
                     guard let nextItem = (intArray + i) as? UnsafeMutablePointer<Int32>, let intValue = nextItem.pointee as? Int32 else {
                         print("Int Val Not Found")
@@ -38,9 +67,14 @@ class SwiftKevin {
                         return -1
                     }
 
+                    ints.append(intValue)
+                    doubles.append(dblVal)
+
                     print("live from new york it's \(intValue) -- \(nextDouble.pointee)")
                 }
 
+                //doSomethingWithMyself()
+                SwiftKevin.doSomeStaticWork(ints: ints, doubles: doubles)
                 return 2501
             }
         )
